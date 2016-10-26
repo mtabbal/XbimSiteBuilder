@@ -1,0 +1,10 @@
+﻿Federation of multiple models
+=============================
+
+  - Overlaying multiple models to behave like a one
+  - Uniform access to the data as if it was a single model
+  - Read-only. To modify the content of the model you have to work with the specific model
+  - Not constrained to a single schema (federate IFC2x3 + IFC4 → query it as IFC4 interfaces)
+  - IFC federation can be stored as an IFC file (in IfcStore)
+
+//TODO: put in a sample code...

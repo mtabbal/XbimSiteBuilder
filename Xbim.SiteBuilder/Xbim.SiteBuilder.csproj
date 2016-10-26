@@ -74,6 +74,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Examples\Federating Models.md.txt" />
     <Content Include="Data\License\Third Party Licenses.md.txt" />
     <Content Include="Data\License\License.md.txt" />
     <Content Include="Data\Examples\Change Log Creation.md.txt" />
