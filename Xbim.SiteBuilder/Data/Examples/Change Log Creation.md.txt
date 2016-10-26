@@ -1,0 +1,89 @@
+﻿Change Log Creation
+===================
+
+This is one of the interesting aspects of xBIM. It is in a core of our design that every change happening in the model is
+a part of a transaction. All transactions are created by an implementation of `IModel` and are weekly referenced from there
+so when you use `using` statement model only keeps reference to the the transaction as long as you keep it. This means that 
+there is a single point where all changes are happening and we can do something with them.
+
+One obvious thing to do is to record all changes, previous states and next states. Combining all this together you can create 
+either back-log or forward-log. To simplify this task we implemented a `Xbim.IO.Delta.TransactionLog` class. In the following example
+we will have a look on how to use it.
+
+```cs
+using (var model = IfcStore.Open("4walls1floorSite.ifc"))
+{
+    using (var txn = model.BeginTransaction("Modification"))
+    {
+        Console.WriteLine(@"Changing existing entity:");
+        Console.WriteLine(@"=========================");
+        using (var log = new TransactionLog(txn))
+        {
+            //change to existing wall
+            var wall = model.Instances.FirstOrDefault<IfcWall>();
+            wall.Name = "Unexpected name";
+            wall.GlobalId = Guid.NewGuid().ToPart21();
+            wall.Description = "New and more descriptive description";
+
+            //print all changes caused by this
+            PrintChanges(log);
+            txn.Commit();
+        }
+        Console.WriteLine();
+    }
+
+    using (var txn = model.BeginTransaction("New"))
+    {
+        Console.WriteLine(@"Creating new entity:");
+        Console.WriteLine(@"====================");
+        using (var log = new TransactionLog(txn))
+        {
+            model.Instances.New<IfcWall>(w =>
+            {
+                w.Name = "Beautiful wall";
+                w.Description = "One of the best walls in the world";
+                w.GlobalId = Guid.NewGuid().ToPart21();
+            });
+
+            //print all changes caused by this
+            PrintChanges(log);
+            txn.Commit();
+        }
+        Console.WriteLine();
+    }
+
+    using (var txn = model.BeginTransaction("Delete"))
+    {
+        Console.WriteLine(@"Deleting existing entity:");
+        Console.WriteLine(@"=========================");
+        using (var log = new TransactionLog(txn))
+        {
+            var wall = model.Instances.FirstOrDefault<IfcWall>(w => w.Representation != null);
+            model.Delete(wall);
+
+            //print all changes caused by this
+            PrintChanges(log);
+            txn.Commit();
+        }
+        Console.WriteLine();
+    }
+}
+```
+
+Previous code uses this simple function to report changes on the objects:
+
+```cs
+private static void PrintChanges(TransactionLog log)
+{
+    foreach (var change in log.Changes)
+    {
+        Console.WriteLine(@"Entity: #{0}={1}, Change: {2}", change.Entity.EntityLabel, change.Entity.GetType().Name, change.ChangeType);
+        Console.WriteLine(@"    Original entity: {0}", change.OriginalEntity);
+        Console.WriteLine(@"    Current entity: {0}", change.CurrentEntity);
+        if (change.ChangeType != ChangeType.Modified) continue;
+
+        foreach (var prop in change.ChangedProperties)
+            Console.WriteLine(@"        Property '{0}' changed from {1} to {2}", prop.Name, prop.OriginalValue, prop.CurrentValue);
+    }
+}
+```

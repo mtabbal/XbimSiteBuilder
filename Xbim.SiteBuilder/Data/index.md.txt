@@ -1,0 +1,57 @@
+﻿# What is it?
+
+The xBIM Tookit (eXtensible Building Information Modelling) is an open-source, software development BIM toolkit that 
+supports the BuildingSmart Data Model (aka the [Industry Foundation Classes IFC](http://en.wikipedia.org/wiki/Industry_Foundation_Classes)).
+
+xBIM allows developers to read, create and view [Building Information (BIM)](http://en.wikipedia.org/wiki/Building_information_modeling) Models in the IFC format. 
+There is full support for geometric, topological operations and visualisation. In addition xBIM supports 
+bi-directional translation between IFC and COBie formats
+
+## Getting Started
+
+Our main distribution channel is [NuGet](https://www.nuget.org/packages?q=xbim). Versions published there are assumed to be stable and safe. 
+You can also use our development feeds as listed at the bottom of this page. Have a look at [this quick guide](/quick-start.html) to get up to speed
+with basic xBIM functions.
+ 
+[XbimEssentials](https://github.com/xBimTeam/XbimEssentials) is a software library to be used for the creation of complex applications, other repositories under the [XbimTeam](https://github.com/xBimTeam) page include a number of example applications to demonstrate its capabilities
+
+* [XbimXplorer](https://github.com/xBimTeam/XbimWindowsUI) - a Windows WPF sample application that can open and render 3D IFC models (and native XBIM models ) as well as displaying semantic data.
+* [XbimWebUI](https://github.com/xBimTeam/XbimWebUI) - a web application that can open and render 3D IFC models. 
+* [XbimUtilities](https://github.com/xBimTeam/XbimUtilities) - a set of sample console applications to perform bulk functions on IFC files.
+* [XbimExchange ](https://github.com/xBimTeam/XbimExchange) - Project containing libraries and sample application demonstrating various approaches to work with COBie. This includes [Xbim.Cobie](https://github.com/xBimTeam/XbimExchange/tree/master/Xbim.COBie) which represents spreadsheet view of the COBie model, [implementation](https://github.com/xBimTeam/XbimExchange/tree/master/Xbim.COBieLite) of [CobieLite](https://www.nibs.org/?page=bsa_cobielite),  [Xbim.CobieLiteUK](https://github.com/xBimTeam/XbimExchange/tree/master/Xbim.COBieLiteUK) which is XML model inspired by CobieLite but more rigorous and memory efficient and [CobieExpress](https://github.com/xBimTeam/XbimEssentials/tree/master/Xbim.CobieExpress) as an EXPRESS based model representing COBie. [XbimExchange ](https://github.com/xBimTeam/XbimExchange) contains sample code for conversions between IFC and various implementations of COBie.
+* [HelloWall](https://github.com/xBimTeam/XbimSamples) - a sample console application demonstrating how to undertake simple IFC creation with Xbim.
+
+Please note: all the applications are provided to demonstrate how to use the Xbim library, they are not intended for use in uncontrolled production environments.
+
+## Licence
+
+The XBIM library is made available under the [CDDL Open Source licence](/license/license.html). List of third party licenses is [here](/license/third-party-licenses.html).
+
+All licences should support the commercial usage of the XBIM system within a 'Larger Work', as long as you honour 
+the licence agreements.
+
+
+## Compilation
+
+The toolkit uses the Nuget technology for the management of several required packages as well as for distributing the libraries.
+If you wish to use the development versions of xBIM make sure to add our NuGet feeds for the master and develop branches of the solution.
+Nuget can download all the required dependencies for you if you have the correct package source configuration.
+
+If you use Visual Studio 2015+ add the following package sources:
+* https://www.myget.org/F/xbim-develop/api/v3/index.json
+* https://www.myget.org/F/xbim-master/api/v3/index.json
+
+If you use Visual Studio 2013+ add the following package sources:
+* https://www.myget.org/F/xbim-develop/api/v2
+* https://www.myget.org/F/xbim-master/api/v2
+
+The resulting configuration pages looks like this in VS2015:
+![example of VS2015 configuration](https://raw.githubusercontent.com/xBimTeam/XbimWindowsUI/master/ReadmeResources/NugetCongfigurationVS2015.png)
+
+## Support & Help
+
+Please use the community features of [GitHub](https://github.com/xBimTeam) to ask any questions and raise issues.
+
+## Getting Involved
+
+If you'd like to get involved and contribute to this project, please contact the Project Coordinator @SteveLockley.

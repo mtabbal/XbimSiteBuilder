@@ -1,0 +1,31 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<# if(_isRoot) {#>
+	<ul class="nav navbar-nav">
+<# } else {#>
+	<ul class="dropdown-menu">
+<# } #>
+<# foreach(var children in Children) {#>
+<# if (children.Children.Any()) { 
+		var t = new Navigation(children, false);#>
+        <li class="dropdown">
+<#		var href = "#";
+		var index = children.Children.FirstOrDefault(c => c.Name == "index");
+	   if (index != null)
+       {
+		   href = index.RelativeUrl;
+	   }
+ #>
+			<a href="<#= href #>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><#= children.Name #> <span class="caret"></span></a>
+			<#= t.TransformText() #>
+<# } else { #>
+        <li>
+			<a href="/<#= children.RelativeUrl #>"><#= children.Name #></a>
+<# } #>
+		</li>
+<# } #>
+    </ul>
