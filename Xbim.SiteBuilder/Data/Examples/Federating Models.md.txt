@@ -57,6 +57,8 @@ namespace BasicExamples
 
 ```
 
+Console output will look like this:
+
 ```
 Model is federation: True
 Number of overall entities: 50303
