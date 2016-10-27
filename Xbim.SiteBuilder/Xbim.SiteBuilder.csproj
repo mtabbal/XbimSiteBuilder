@@ -89,6 +89,7 @@
     <None Include="App.config" />
     <Content Include="Data\index.md.txt" />
     <Content Include="Data\xBIM 4\xBIM 4 Release Notes.md.txt" />
+    <None Include="bootstrap.config" />
     <None Include="packages.config" />
     <None Include="Resources\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Resources\fonts\glyphicons-halflings-regular.ttf" />
