@@ -93,6 +93,14 @@ namespace ColorCode.Compilation.Languages
                                        {
                                            { 1, ScopeName.Keyword }
                                        }),
+
+                               //Modified by Martin Cerny (martin1cerny@gmail.com)
+                               new LanguageRule(
+                                   @"(?<![\.|a-zA-Z])([A-Z]\w*)(?! =|\w)",
+                                   new Dictionary<int, string>
+                                   {
+                                       { 0, ScopeName.Type }
+                                   })
                            };
             }
         }

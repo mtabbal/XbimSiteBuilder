@@ -81,6 +81,7 @@
     <Content Include="Data\Examples\Insert Copy Function.md.txt" />
     <Content Include="Data\Examples\Basic Model Operations.md.txt" />
     <Content Include="Data\xBIM 4\Fast Upgrade Track.md.txt" />
+    <Content Include="Resources\css\codestyles.css" />
     <Content Include="Templates\Navigation.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Navigation.cs</LastGenOutput>

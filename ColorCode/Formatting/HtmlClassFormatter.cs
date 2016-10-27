@@ -45,7 +45,8 @@ namespace ColorCode.Formatting
             Guard.ArgNotNull(language, "language");
             Guard.ArgNotNull(textWriter, "textWriter");
 
-            textWriter.WriteLine();
+            //Modified by Martin Cerny (martin1cerny@gmail.com):
+            WriteElementEnd("code", textWriter);
             WriteHeaderPreEnd(textWriter);
             WriteHeaderDivEnd(textWriter);
         }
@@ -60,7 +61,8 @@ namespace ColorCode.Formatting
 
             WriteHeaderDivStart(styleSheet, language, textWriter);
             WriteHeaderPreStart(textWriter);
-            textWriter.WriteLine();
+            //Modified by Martin Cerny (martin1cerny@gmail.com):
+            WriteElementStart("code", textWriter);
         }
 
         private static void GetStyleInsertionsForCapturedStyle(Scope scope, ICollection<TextInsertion> styleInsertions)
@@ -129,7 +131,8 @@ namespace ColorCode.Formatting
         private static void WriteElementStart(string elementName,
                                               TextWriter writer)
         {
-            WriteElementStart(elementName, "", writer);
+            //Modified by Martin Cerny (martin1cerny@gmail.com):
+            writer.Write("<{0}>", elementName);
         }
 
         private static void WriteElementStart(string elementName,

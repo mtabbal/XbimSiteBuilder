@@ -43,6 +43,7 @@ namespace ColorCode
             Load<Koka>();
             Load<Haskell>();
             Load<Markdown>();
+            Load<STEP>();
         }
 
         /// <summary>
@@ -240,6 +241,16 @@ namespace ColorCode
         public static ILanguage Markdown
         {
             get { return LanguageRepository.FindById(LanguageId.Markdown); }
+        }
+
+        //modified by Martin Cerny (martin1cerny@gmail.com)
+        /// <summary>
+        /// Language support for STEP 21 files like *.ifc
+        /// </summary>
+        /// <value>Language support for STEP 21 files like *.ifc </value>
+        public static ILanguage Step
+        {
+            get { return LanguageRepository.FindById(LanguageId.Step); }
         }
 
         /// <summary>

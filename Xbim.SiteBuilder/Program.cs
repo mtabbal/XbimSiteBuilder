@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using ColorCode;
+using ColorCode.Formatting;
+using ColorCode.Styling.StyleSheets;
 
 namespace Xbim.SiteBuilder
 {
@@ -37,15 +40,15 @@ namespace Xbim.SiteBuilder
             //create or recreate output folder
             if (!Directory.Exists(root))
                 Directory.CreateDirectory(root);
-            else
-            {
-                Directory.Delete(root, true);
-                Directory.CreateDirectory(root);
-            }
 
 
             //copy all directories and files from resources to target root
             DirectoryCopy(resDir.FullName, root);
+
+            //Create code colouring CSS file
+            var codeCss = (StyleSheets.Default as DefaultStyleSheet).GetCssFile();
+            var codeCssPath = Path.Combine(root, "css", "codestyles.css");
+            File.WriteAllText(codeCssPath, codeCss);
 
             //build content structure
             var contentRoot = new ContentNode(dataDir, dataDir);
@@ -79,7 +82,8 @@ namespace Xbim.SiteBuilder
                 var template = new Layout
                 {
                     Content = data,
-                    NavigationRoot = contentRoot
+                    NavigationRoot = contentRoot,
+                    WithBanner = node.RelativeUrl == "index.html"
                 };
                 var content = template.TransformText();
 
@@ -189,13 +193,17 @@ namespace Xbim.SiteBuilder
                 {
                     var codeContent = code.ToString();
                     if (lang.Equals("cs", StringComparison.InvariantCultureIgnoreCase))
-                        codeContent = cc.Colorize(codeContent, ColorCode.Languages.CSharp);
+                        cc.Colorize(codeContent, Languages.CSharp, new HtmlClassFormatter(), StyleSheets.Default, writer);
                     else if (lang.Equals("js", StringComparison.InvariantCultureIgnoreCase))
-                        codeContent = cc.Colorize(codeContent, ColorCode.Languages.JavaScript);
+                        cc.Colorize(codeContent, Languages.JavaScript, new HtmlClassFormatter(), StyleSheets.Default, writer);
+                    else if (lang.Equals("step", StringComparison.InvariantCultureIgnoreCase))
+                        cc.Colorize(codeContent, Languages.Step, new HtmlClassFormatter(), StyleSheets.Default, writer);
                     else
+                    {
                         codeContent = $"<pre><code>{codeContent}</code></pre>";
+                        writer.Write(codeContent);
+                    }
 
-                    writer.Write(codeContent);
 
                     //clear
                     code = new StringWriter();
@@ -290,7 +298,7 @@ namespace Xbim.SiteBuilder
             foreach (FileInfo file in files)
             {
                 string temppath = Path.Combine(destDirName, file.Name);
-                file.CopyTo(temppath, false);
+                file.CopyTo(temppath, true);
             }
 
             // If copying subdirectories, copy them and their contents to new location.

@@ -2,6 +2,7 @@
 
 using System.Drawing;
 using ColorCode.Common;
+using System.IO;
 
 namespace ColorCode.Styling.StyleSheets
 {
@@ -267,6 +268,34 @@ namespace ColorCode.Styling.StyleSheets
         public StyleDictionary Styles
         {
             get { return styles; }
+        }
+
+        //Modified by Martin Cerny (martin1cerny@gmail.com):
+        /// <summary>
+        /// Generates CSS file representing this stylesheet
+        /// </summary>
+        /// <returns></returns>
+        public string GetCssFile()
+        {
+            var w = new StringWriter();
+            w.WriteLine("/*");
+            w.WriteLine("    This file is generated from ColorCode. Any changes will be lost.");
+            w.WriteLine("*/");
+            foreach (var style in Styles)
+            {
+                w.WriteLine($".{style.CssClassName}{{");
+                if (style.Foreground != Color.Empty)
+                    w.WriteLine($"  color: {style.Foreground.ToHtmlColor()};");
+                if(style.Background != Color.Empty)
+                    w.WriteLine($"  background-color: {style.Background.ToHtmlColor()};");
+                if (style.Italic)
+                    w.WriteLine("   font-style: italic;");
+                if (style.Bold)
+                    w.WriteLine("   font-weight: bold;");
+                w.WriteLine("}");
+                w.WriteLine();
+            }
+            return w.ToString();
         }
     }
 }

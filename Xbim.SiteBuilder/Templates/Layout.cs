@@ -18,7 +18,7 @@ namespace Xbim.SiteBuilder.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Layout.tt"
+    #line 1 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class Layout : LayoutBase
     {
@@ -32,26 +32,30 @@ namespace Xbim.SiteBuilder.Templates
                     "a http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" con" +
                     "tent=\"width=device-width, initial-scale=1\">\r\n    <!-- The above 3 meta tags *mus" +
                     "t* come first in the head; any other head content must come *after* these tags -" +
-                    "->\r\n    <meta name=\"description\" content=\"\">\r\n    <meta name=\"author\" content=\"\"" +
-                    ">\r\n    <link rel=\"icon\" href=\"/img/favicon.ico\">\r\n\r\n    <title>xBIM</title>\r\n\r\n " +
-                    "   <!-- Bootstrap core CSS -->\r\n    <link href=\"/css/bootstrap.min.css\" rel=\"sty" +
-                    "lesheet\">\r\n\r\n    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 element" +
-                    "s and media queries -->\r\n    <!--[if lt IE 9]>\r\n      <script src=\"https://oss.m" +
-                    "axcdn.com/html5shiv/3.7.3/html5shiv.min.js\"></script>\r\n      <script src=\"https:" +
-                    "//oss.maxcdn.com/respond/1.4.2/respond.min.js\"></script>\r\n    <![endif]-->\r\n\r\n  " +
-                    "  <!-- Custom styles for this template -->\r\n    <link href=\"/css/site.css\" rel=\"" +
-                    "stylesheet\">\r\n\r\n    <script src=\"/js/jquery.min.js\"></script>\r\n\r\n  </head>\r\n<!--" +
-                    " NAVBAR\r\n================================================== -->\r\n  <body>\r\n\r\n   " +
-                    " <nav class=\"navbar navbar-inverse\">\r\n      <div class=\"container\">\r\n        <di" +
-                    "v class=\"navbar-header\">\r\n          <button type=\"button\" class=\"navbar-toggle c" +
-                    "ollapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" ari" +
-                    "a-controls=\"navbar\">\r\n            <span class=\"sr-only\">Toggle navigation</span>" +
-                    "\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"" +
-                    "></span>\r\n            <span class=\"icon-bar\"></span>\r\n          </button>\r\n     " +
-                    "     <a class=\"navbar-brand\" href=\"/index.html\">xBIM</a>\r\n        </div>\r\n      " +
-                    "  <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n          ");
+                    "->\r\n    <meta name=\"description\" content=\"xBIM Toolkit is an Open Source toolkit" +
+                    " for IFC and BIM. You can use it to do anything with IFC. It implements IFC2x3 a" +
+                    "nd IFC4 and allows to develop SW agnostic to IFC version and file format.\">\r\n   " +
+                    " <meta name=\"author\" content=\"xBIM Team\">\r\n    <link rel=\"icon\" href=\"/img/favic" +
+                    "on.ico\">\r\n\r\n    <title>xBIM</title>\r\n\r\n    <!-- Bootstrap core CSS -->\r\n    <lin" +
+                    "k href=\"/css/bootstrap.min.css\" rel=\"stylesheet\">\r\n\r\n    <!-- HTML5 shim and Res" +
+                    "pond.js for IE8 support of HTML5 elements and media queries -->\r\n    <!--[if lt " +
+                    "IE 9]>\r\n      <script src=\"https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min." +
+                    "js\"></script>\r\n      <script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.m" +
+                    "in.js\"></script>\r\n    <![endif]-->\r\n\r\n    <!-- Custom styles for this template -" +
+                    "->\r\n    <link href=\"/css/codestyles.css\" rel=\"stylesheet\">\r\n    <link href=\"/css" +
+                    "/site.css\" rel=\"stylesheet\">\r\n\r\n    <script src=\"/js/jquery.min.js\"></script>\r\n\r" +
+                    "\n  </head>\r\n<!-- NAVBAR\r\n================================================== -->\r" +
+                    "\n  <body>\r\n\r\n    <nav class=\"navbar navbar-inverse\">\r\n      <div class=\"containe" +
+                    "r\">\r\n        <div class=\"navbar-header\">\r\n          <button type=\"button\" class=" +
+                    "\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expa" +
+                    "nded=\"false\" aria-controls=\"navbar\">\r\n            <span class=\"sr-only\">Toggle n" +
+                    "avigation</span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span " +
+                    "class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n          " +
+                    "</button>\r\n          <a class=\"navbar-brand\" href=\"/index.html\">xBIM</a>\r\n      " +
+                    "  </div>\r\n        <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n          " +
+                    "");
             
-            #line 50 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Layout.tt"
+            #line 51 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
  
 		  var navTempl = new Navigation(NavigationRoot, true);
 		   
@@ -60,44 +64,57 @@ namespace Xbim.SiteBuilder.Templates
             #line hidden
             this.Write("\t\t   ");
             
-            #line 53 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Layout.tt"
+            #line 54 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(navTempl.TransformText()));
             
             #line default
             #line hidden
-            this.Write("\r\n        </div><!--/.nav-collapse -->\r\n      </div>\r\n    </nav>\r\n\t<div class=\"ba" +
-                    "nner architecture\">\r\n\t\t<h1>\r\n\t\t    The xBIM Toolkit <br />\r\n\t\t    <small>eXtensi" +
-                    "ble Building Information Modelling </small>\r\n\t\t</h1>\r\n\t</div>\r\n\r\n\t");
+            this.Write("\r\n        </div><!--/.nav-collapse -->\r\n      </div>\r\n    </nav>\r\n");
             
-            #line 64 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Layout.tt"
+            #line 58 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+ if (WithBanner) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t<div class=\"banner architecture\">\r\n\t\t<h1>\r\n\t\t    The xBIM Toolkit <br />\r\n\t\t    " +
+                    "<small>eXtensible Building Information Modelling</small>\r\n\t\t</h1>\r\n\t</div>\r\n");
+            
+            #line 65 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t");
+            
+            #line 67 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
  if(UseContainer) {
             
             #line default
             #line hidden
             this.Write("\t<div class=\"container\">\r\n\r\n");
             
-            #line 67 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Layout.tt"
+            #line 70 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Content));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n    </div>\r\n\t");
             
-            #line 70 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Layout.tt"
+            #line 73 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
  } else { 
             
             #line default
             #line hidden
             this.Write("\t<div class=\"container\">\r\n\r\n");
             
-            #line 73 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Layout.tt"
+            #line 76 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Content));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n    </div>\r\n\t");
             
-            #line 76 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Layout.tt"
+            #line 79 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
  } 
             
             #line default

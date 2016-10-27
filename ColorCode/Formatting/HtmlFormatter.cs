@@ -45,10 +45,9 @@ namespace ColorCode.Formatting
         {
             Guard.ArgNotNull(styleSheet, "styleSheet");
             Guard.ArgNotNull(textWriter, "textWriter");
-            
-            //textWriter.WriteLine();
-            WriteHeaderPreEnd(textWriter);
-            WriteHeaderDivEnd(textWriter);
+
+            WriteElementEnd("code", textWriter);
+            WriteElementEnd("pre" , textWriter);
         }
 
         public void WriteHeader(IStyleSheet styleSheet,
@@ -57,27 +56,29 @@ namespace ColorCode.Formatting
         {
             Guard.ArgNotNull(styleSheet, "styleSheet");
             Guard.ArgNotNull(textWriter, "textWriter");
-            
-            WriteHeaderDivStart(styleSheet, textWriter);
-            WriteHeaderPreStart(textWriter);
+
+            WriteElementStart(textWriter, "pre");
+            WriteElementStart(textWriter, "code");
             textWriter.WriteLine();
         }
 
         private static void GetStyleInsertionsForCapturedStyle(Scope scope, ICollection<TextInsertion> styleInsertions)
         {
-            styleInsertions.Add(new TextInsertion {
-                                                      Index = scope.Index,
-                                                      Scope = scope
-                                                  });
+            styleInsertions.Add(new TextInsertion
+            {
+                Index = scope.Index,
+                Scope = scope
+            });
 
 
             foreach (Scope childScope in scope.Children)
                 GetStyleInsertionsForCapturedStyle(childScope, styleInsertions);
 
-            styleInsertions.Add(new TextInsertion {
-                                                      Index = scope.Index + scope.Length,
-                                                      Text = "</span>"
-                                                  });
+            styleInsertions.Add(new TextInsertion
+            {
+                Index = scope.Index + scope.Length,
+                Text = "</span>"
+            });
         }
 
         private static void BuildSpanForCapturedStyle(Scope scope,
@@ -102,10 +103,6 @@ namespace ColorCode.Formatting
             WriteElementStart(writer, "span", foreground, background, italic, bold);
         }
 
-        private static void WriteHeaderDivEnd(TextWriter writer)
-        {
-            WriteElementEnd("div", writer);
-        }
 
         private static void WriteElementEnd(string elementName,
                                             TextWriter writer)
@@ -113,37 +110,11 @@ namespace ColorCode.Formatting
             writer.Write("</{0}>", elementName);
         }
 
-        private static void WriteHeaderPreEnd(TextWriter writer)
-        {
-            WriteElementEnd("pre", writer);
-        }
-
-        private static void WriteHeaderPreStart(TextWriter writer)
-        {
-            WriteElementStart(writer,"pre");
-        }
-
-        private static void WriteHeaderDivStart(IStyleSheet styleSheet,
-                                                TextWriter writer)
-        {
-            Color foreground = Color.Empty;
-            Color background = Color.Empty;
-
-            if (styleSheet.Styles.Contains(ScopeName.PlainText))
-            {
-                Style plainTextStyle = styleSheet.Styles[ScopeName.PlainText];
-
-                foreground = plainTextStyle.Foreground;
-                background = plainTextStyle.Background;
-            }
-
-            WriteElementStart(writer, "div", foreground, background );
-        }
-
+       
         private static void WriteElementStart(TextWriter writer,
                                               string elementName)
         {
-            WriteElementStart(writer, elementName, Color.Empty, Color.Empty);
+            writer.Write("<{0}>", elementName);
         }
 
         private static void WriteElementStart(TextWriter writer,

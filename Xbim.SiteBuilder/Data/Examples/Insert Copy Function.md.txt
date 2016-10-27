@@ -55,7 +55,7 @@ PropertyTranformDelegate semanticFilter = (property, parentObject) =>
 };
 ```
 
-`PropertyTranformDelegate` takes two arguments where first is `ExpressMetaProperty` and second is an `object` which represents `IPersistEntity`.
+`PropertyTranformDelegate` takes two arguments where the first is `ExpressMetaProperty` and the second is an `object` which represents `IPersistEntity`.
 `ExpressMetaProperty` is a cached object which is part of our own reflection meta model which we use for some data operations.
 The delegate is used in other code which uses C# reflection to inspect the data and copy values over. If you don't specify a delegate `InsertCopy()`
 will use all properties in the entity and copy them over. 

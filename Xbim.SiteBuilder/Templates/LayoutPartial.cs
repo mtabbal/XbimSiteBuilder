@@ -10,6 +10,8 @@ namespace Xbim.SiteBuilder.Templates
     {
         public string Content { get; set; }
         public bool UseContainer { get; set; } = true;
+        public bool WithBanner { get; set; } = false;
+
 
         public ContentNode NavigationRoot { get; set; }
     }

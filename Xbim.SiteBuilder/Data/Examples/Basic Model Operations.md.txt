@@ -129,6 +129,49 @@ using (var model = IfcStore.Create(editor, IfcSchemaVersion.Ifc4, XbimStoreType.
 }
 ```
 
+Resulting simple IFC will look like this:
+
+```step
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION ((''), '2;1');
+FILE_NAME ('', '2016-10-27T13:14:43', (''), (''), 'Xbim File Processor version 3.2.0.0', 'Xbim version 3.2.0.0', '');
+FILE_SCHEMA (('IFC4'));
+ENDSEC;
+DATA;
+#1=IFCPROJECT('2t0OftVsP8UBH3rtAB$yJv',#2,'Basic Creation',$,$,$,$,(#20,#23),#8);
+#2=IFCOWNERHISTORY(#5,#6,$,.ADDED.,$,$,$,0);
+#3=IFCPERSON($,'Santini Aichel','Johann Blasius',$,$,$,$,$);
+#4=IFCORGANIZATION($,'Independent Architecture',$,$,$);
+#5=IFCPERSONANDORGANIZATION(#3,#4,$);
+#7=IFCORGANIZATION($,'xBIM Team',$,$,$);
+#6=IFCAPPLICATION(#7,$,'xBIM Toolkit','xBIM');
+#8=IFCUNITASSIGNMENT((#9,#10,#11,#12,#13,#14,#15,#16,#17));
+#9=IFCSIUNIT(*,.LENGTHUNIT.,.MILLI.,.METRE.);
+#10=IFCSIUNIT(*,.AREAUNIT.,$,.SQUARE_METRE.);
+#11=IFCSIUNIT(*,.VOLUMEUNIT.,$,.CUBIC_METRE.);
+#12=IFCSIUNIT(*,.SOLIDANGLEUNIT.,$,.STERADIAN.);
+#13=IFCSIUNIT(*,.PLANEANGLEUNIT.,$,.RADIAN.);
+#14=IFCSIUNIT(*,.MASSUNIT.,$,.GRAM.);
+#15=IFCSIUNIT(*,.TIMEUNIT.,$,.SECOND.);
+#16=IFCSIUNIT(*,.THERMODYNAMICTEMPERATUREUNIT.,$,.DEGREE_CELSIUS.);
+#17=IFCSIUNIT(*,.LUMINOUSINTENSITYUNIT.,$,.LUMEN.);
+#18=IFCCARTESIANPOINT((0.,0.,0.));
+#19=IFCAXIS2PLACEMENT3D(#18,$,$);
+#20=IFCGEOMETRICREPRESENTATIONCONTEXT('Building Model','Model',3,1.E-05,#19,$);
+#21=IFCCARTESIANPOINT((0.,0.));
+#22=IFCAXIS2PLACEMENT2D(#21,$);
+#23=IFCGEOMETRICREPRESENTATIONCONTEXT('Building Plan View','Plan',2,1.E-05,#22,$);
+#24=IFCWALL('1YTVCro6L0$OJQL2X7wICY',#2,'The very first wall',$,$,$,$,$,$);
+#27=IFCPROPERTYSINGLEVALUE('Text property',$,IFCTEXT('Any arbitrary text you like'),$);
+#28=IFCPROPERTYSINGLEVALUE('Length property',$,IFCLENGTHMEASURE(56.),$);
+#29=IFCPROPERTYSINGLEVALUE('Number property',$,IFCNUMERICMEASURE(789.2),$);
+#30=IFCPROPERTYSINGLEVALUE('Logical property',$,IFCLOGICAL(.T.),$);
+#26=IFCPROPERTYSET('2u_olyjv13oRt0GvSVSxHS',#2,'Basic set of properties',$,(#27,#28,#29,#30));
+#25=IFCRELDEFINESBYPROPERTIES('3I5GuvWn95PRXcxoFGfJAL',#2,$,$,(#24),#26);
+ENDSEC;
+END-ISO-10303-21;
+```
 
 Retrieve
 --------
