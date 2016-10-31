@@ -89,6 +89,7 @@ namespace Xbim.SiteBuilder
 
                 //fix root absolute paths to relative path - levels up to get to root
                 MakeRelativePaths(ref content, node.Depth, contentRoot, node, rootDir);
+                content = MakeExternalLinksOpenBlank(content);
 
                 //save the result relative to root directory
                 var htmlFile = Path.Combine(outDir.FullName, node.UrlName);
@@ -198,6 +199,8 @@ namespace Xbim.SiteBuilder
                         cc.Colorize(codeContent, Languages.JavaScript, new HtmlClassFormatter(), StyleSheets.Default, writer);
                     else if (lang.Equals("step", StringComparison.InvariantCultureIgnoreCase))
                         cc.Colorize(codeContent, Languages.Step, new HtmlClassFormatter(), StyleSheets.Default, writer);
+                    else if (lang.Equals("xml", StringComparison.InvariantCultureIgnoreCase))
+                        cc.Colorize(codeContent, Languages.Xml, new HtmlClassFormatter(), StyleSheets.Default, writer);
                     else
                     {
                         codeContent = $"<pre><code>{codeContent}</code></pre>";
@@ -214,6 +217,13 @@ namespace Xbim.SiteBuilder
                 line = reader.ReadLine();
             }
             return writer.ToString();
+        }
+
+        private static string MakeExternalLinksOpenBlank(string content)
+        {
+            content = content.Replace("href=\"http", "target=\"_blank\" href=\"http");
+            content = content.Replace("href='http", "target=\"_blank\" href='http");
+            return content;
         }
 
         private static Regex _pathExp = new Regex("(href|src)=['|\"](?<path>.+?)['|\"]", RegexOptions.IgnoreCase );

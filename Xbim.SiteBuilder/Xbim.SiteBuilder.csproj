@@ -76,6 +76,7 @@
   <ItemGroup>
     <Content Include="Data\Examples\Federating Models.md.txt" />
     <Content Include="Data\Examples\Proper Wall in 3D.md.txt" />
+    <Content Include="Data\Examples\STEP to XML and Back Again.md.txt" />
     <Content Include="Data\License\Third Party Licenses.md.txt" />
     <Content Include="Data\License\License.md.txt" />
     <Content Include="Data\Examples\Change Log Creation.md.txt" />
@@ -83,6 +84,8 @@
     <Content Include="Data\Examples\Basic Model Operations.md.txt" />
     <Content Include="Data\xBIM 4\Fast Upgrade Track.md.txt" />
     <Content Include="Resources\css\codestyles.css" />
+    <Content Include="Resources\js\sample-house.js" />
+    <Content Include="Resources\js\xbim-viewer.js" />
     <Content Include="Templates\Navigation.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Navigation.cs</LastGenOutput>

@@ -96,7 +96,7 @@ namespace ColorCode.Compilation.Languages
 
                                //Modified by Martin Cerny (martin1cerny@gmail.com)
                                new LanguageRule(
-                                   @"(?<![\.|a-zA-Z])([A-Z]\w*)(?! =|\(|\w)",
+                                   @"(?<![\.|a-zA-Z0-9])([A-Z]\w*)(?! =|\(|\w)",
                                    new Dictionary<int, string>
                                    {
                                        { 0, ScopeName.Type }
