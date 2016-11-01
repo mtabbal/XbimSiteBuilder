@@ -92,6 +92,8 @@
     <Content Include="Resources\img\logos\nbs_logo_gray.png" />
     <Content Include="Resources\img\logos\viewpoint_logo_gray.png" />
     <Content Include="Resources\img\logos\welplan_logo_gray.png" />
+    <Content Include="Resources\img\logos\xbim_white_h35.png" />
+    <Content Include="Resources\img\logos\xbim_white_h50.png" />
     <Content Include="Resources\js\sample-house.js" />
     <Content Include="Resources\js\xbim-viewer.js" />
     <Content Include="Templates\Navigation.tt">

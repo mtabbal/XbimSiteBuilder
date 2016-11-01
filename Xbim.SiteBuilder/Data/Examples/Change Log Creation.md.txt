@@ -8,7 +8,7 @@ Change Log Creation
 ===================
 
 This is one of the interesting aspects of xBIM. It is in a core of our design that every change happening in the model is
-a part of a transaction. All transactions are created by an implementation of `IModel` and are weekly referenced from there
+a part of a transaction. All transactions are created by an implementation of `IModel` and are weakly referenced from there
 so when you use `using` statement model only keeps reference to the the transaction as long as you keep it. This means that 
 there is a single point where all changes are happening and we can do something with them.
 
