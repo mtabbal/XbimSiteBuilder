@@ -28,36 +28,63 @@ namespace Xbim.SiteBuilder.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"utf-8\">\r\n    <met" +
-                    "a http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" con" +
-                    "tent=\"width=device-width, initial-scale=1\">\r\n    <!-- The above 3 meta tags *mus" +
-                    "t* come first in the head; any other head content must come *after* these tags -" +
-                    "->\r\n    <meta name=\"description\" content=\"xBIM Toolkit is an Open Source toolkit" +
-                    " for IFC and BIM. You can use it to do anything with IFC. It implements IFC2x3 a" +
-                    "nd IFC4 and allows to develop SW agnostic to IFC version and file format.\">\r\n   " +
-                    " <meta name=\"author\" content=\"xBIM Team\">\r\n    <link rel=\"icon\" href=\"/img/favic" +
-                    "on.ico\">\r\n\r\n    <title>xBIM</title>\r\n\r\n    <!-- Bootstrap core CSS -->\r\n    <lin" +
-                    "k href=\"/css/bootstrap.min.css\" rel=\"stylesheet\">\r\n\r\n    <!-- HTML5 shim and Res" +
-                    "pond.js for IE8 support of HTML5 elements and media queries -->\r\n    <!--[if lt " +
-                    "IE 9]>\r\n      <script src=\"https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min." +
-                    "js\"></script>\r\n      <script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.m" +
-                    "in.js\"></script>\r\n    <![endif]-->\r\n\r\n    <!-- Custom styles for this template -" +
-                    "->\r\n    <link href=\"/css/codestyles.css\" rel=\"stylesheet\">\r\n    <link href=\"/css" +
-                    "/site.css\" rel=\"stylesheet\">\r\n\r\n    <script src=\"/js/jquery.min.js\"></script>\r\n\r" +
-                    "\n  </head>\r\n<!-- NAVBAR\r\n================================================== -->\r" +
-                    "\n  <body>\r\n\r\n    <nav class=\"navbar navbar-inverse\">\r\n      <div class=\"containe" +
-                    "r\">\r\n        <div class=\"navbar-header\">\r\n          <button type=\"button\" class=" +
-                    "\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expa" +
-                    "nded=\"false\" aria-controls=\"navbar\">\r\n            <span class=\"sr-only\">Toggle n" +
-                    "avigation</span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span " +
-                    "class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n          " +
-                    "</button>\r\n          <a class=\"navbar-brand\" href=\"/index.html\">xBIM</a>\r\n      " +
-                    "  </div>\r\n        <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n          " +
-                    "");
+            this.Write(@"<!DOCTYPE html>
+<html lang=""en"">
+  <head>
+    <meta charset=""utf-8"">
+    <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name=""description"" content=""xBIM Toolkit is an Open Source toolkit for IFC and BIM. You can use it to do anything with IFC. It implements IFC2x3 and IFC4 and allows to develop SW agnostic to IFC version and file format."">
+    <meta name=""author"" content=""xBIM Team"">
+    <link rel=""icon"" href=""/img/favicon.ico"">
+
+    <title>");
+            
+            #line 17 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.Title ?? ContentNode.Title));
+            
+            #line default
+            #line hidden
+            this.Write(@"</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href=""/css/bootstrap.min.css"" rel=""stylesheet"">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src=""https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js""></script>
+      <script src=""https://oss.maxcdn.com/respond/1.4.2/respond.min.js""></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href=""/css/codestyles.css"" rel=""stylesheet"">
+    <link href=""/css/site.css"" rel=""stylesheet"">
+
+    <script src=""/js/jquery.min.js""></script>
+
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+
+    <nav class=""navbar navbar-inverse"">
+      <div class=""container"">
+        <div class=""navbar-header"">
+          <button type=""button"" class=""navbar-toggle collapsed"" data-toggle=""collapse"" data-target=""#navbar"" aria-expanded=""false"" aria-controls=""navbar"">
+            <span class=""sr-only"">Toggle navigation</span>
+            <span class=""icon-bar""></span>
+            <span class=""icon-bar""></span>
+            <span class=""icon-bar""></span>
+          </button>
+          <a class=""navbar-brand"" href=""/index.html"">xBIM</a>
+        </div>
+        <div id=""navbar"" class=""collapse navbar-collapse"">
+          ");
             
             #line 51 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
  
-		  var navTempl = new Navigation(NavigationRoot, true);
+		  var navTempl = new Navigation(NavigationRoot, true, ContentNode);
 		   
             
             #line default
@@ -72,56 +99,62 @@ namespace Xbim.SiteBuilder.Templates
             this.Write("\r\n        </div><!--/.nav-collapse -->\r\n      </div>\r\n    </nav>\r\n");
             
             #line 58 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
- if (WithBanner) { 
+ if (Settings.ShowBanner) { 
             
             #line default
             #line hidden
-            this.Write("\t<div class=\"banner architecture\">\r\n\t\t<h1>\r\n\t\t    The xBIM Toolkit <br />\r\n\t\t    " +
-                    "<small>eXtensible Building Information Modelling</small>\r\n\t\t</h1>\r\n\t</div>\r\n");
+            this.Write("\t<div class=\"banner architecture\">\r\n\t\t");
             
-            #line 65 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+            #line 60 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Settings.BannerContent));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t</div>\r\n");
+            
+            #line 62 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\r\n\t");
+            this.Write("\r\n");
             
-            #line 67 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
- if(UseContainer) {
-            
-            #line default
-            #line hidden
-            this.Write("\t<div class=\"container\">\r\n\r\n");
-            
-            #line 70 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Content));
+            #line 64 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+ if(Settings.UseContainer) {
             
             #line default
             #line hidden
-            this.Write("\r\n\r\n    </div>\r\n\t");
+            this.Write("\t<div class=\"container\">\r\n\t");
             
-            #line 73 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+            #line 66 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
  } else { 
             
             #line default
             #line hidden
-            this.Write("\t<div class=\"container\">\r\n\r\n");
+            this.Write("\t<div>\r\n\t");
             
-            #line 76 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Content));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\r\n    </div>\r\n\t");
-            
-            #line 79 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+            #line 68 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
  } 
             
             #line default
             #line hidden
-            this.Write(@"    
+            
+            #line 69 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Layout.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Content));
+            
+            #line default
+            #line hidden
+            this.Write(@"
 
+    </div>
+    
 
+	<div class=""brands-container"">
+	<p><small>Some of the companies using xBIM Toolkit:</small></p>
+		<img src=""/img/logos/viewpoint_logo_gray.png"" class=""brand""/>
+		<img src=""/img/logos/welplan_logo_gray.png"" class=""brand""/>
+		<img src=""/img/logos/nbs_logo_gray.png"" class=""brand""/>
+	</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

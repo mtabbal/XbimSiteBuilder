@@ -3,29 +3,36 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Xbim.SiteBuilder.Structure" #>
 
 <# if(_isRoot) {#>
 	<ul class="nav navbar-nav">
 <# } else {#>
 	<ul class="dropdown-menu">
 <# } #>
-<# foreach(var children in Children) {#>
-<# if (children.Children.Any()) { 
-		var t = new Navigation(children, false);#>
+<#	foreach(var g in ChildrenGroups)
+    {
+        if (!string.IsNullOrWhiteSpace(g.Key))
+        { #>
+		<li role="separator" class="group-divider"><#= g.Key #> </li>
+<#      }
+		foreach(var children in  GetChildren(g)) {
+			if (GetChildren(children).Any()) { 
+			var t = new Navigation(children, false, _activeNode);#>
         <li class="dropdown">
-<#		var href = "#";
-		var index = children.Children.FirstOrDefault(c => c.Name == "index");
-	   if (index != null)
-       {
-		   href = index.RelativeUrl;
-	   }
- #>
-			<a href="<#= href #>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><#= children.Name #> <span class="caret"></span></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><#= children.Title #> <span class="caret"></span></a>
 			<#= t.TransformText() #>
-<# } else { #>
+<#			} else { #>
+<#				if (children == _activeNode) { #>
+        <li class="active">
+<#				} else { #>		
         <li>
-			<a href="/<#= children.RelativeUrl #>"><#= children.Name #></a>
-<# } #>
+<#				} #>
+			<a href="/<#= children.RelativeUrl #>"><#= children.Title #></a>
+<#			} #>
 		</li>
-<# } #>
+<#		} 	
+	}
+ 
+	#>
     </ul>

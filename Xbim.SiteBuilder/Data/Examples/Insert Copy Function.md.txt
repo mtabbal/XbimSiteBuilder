@@ -1,4 +1,10 @@
-﻿Insert Copy Function
+﻿<!-- {
+  "Order" : 2,
+  "MenuGroup" : "Advanced",
+  "MenuGroupOrder" : 5
+} -->
+
+Insert Copy Function
 ====================
 
 Merging and deleting entities in IFC models is a non-trivial task because IFC is not a hierarchical structure. It is a complex structure with 

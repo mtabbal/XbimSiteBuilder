@@ -1,4 +1,10 @@
-﻿Converting STEP physical file to XML and vice versa
+﻿<!-- {
+  "Order" : 1,
+  "MenuGroup" : "Basic",
+  "MenuGroupOrder" : 0
+} -->
+
+Converting STEP physical file to XML and vice versa
 ===================================================
 
 xBIM Toolkit implements 100% of IFC2x3 and IFC4 schemas and it supports all physical representations. 

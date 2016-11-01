@@ -1,4 +1,10 @@
-﻿Federation of multiple models
+﻿<!-- {
+  "Order" : 2,
+  "MenuGroup" : "Advanced",
+  "MenuGroupOrder" : 5
+} -->
+
+Federation of multiple models
 =============================
 
   - Overlaying multiple models to behave like a one

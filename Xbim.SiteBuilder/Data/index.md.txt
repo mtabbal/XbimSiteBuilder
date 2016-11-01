@@ -1,4 +1,14 @@
-﻿# What is it?
+﻿<!-- {
+  "UseContainer" : true,
+  "Order" : -1,
+  "MenuGroup" : null,
+  "MenuGroupOrder" : 0,
+  "ShowBanner" : true,
+  "BannerContent" : "<h1>xBIM Toolkit <br /> <small>eXtensible Building Information Modelling</small></h1>",
+  "Title": "xBIM Toolkit",
+  "Template" : "Layout"
+} -->
+# What is it?
 
 The **xBIM Toolkit** (eXtensible Building Information Modelling) is an [open-source](/license/license.html), software development BIM toolkit that 
 supports the BuildingSmart Data Model (aka the [Industry Foundation Classes IFC](http://en.wikipedia.org/wiki/Industry_Foundation_Classes)).
@@ -18,7 +28,7 @@ for the creation of complex applications, other repositories under the [xBIM Tea
 demonstrate its capabilities:
 
 * [xBIM Xplorer](https://github.com/xBimTeam/XbimWindowsUI) - a Windows WPF sample application that can open and render 3D IFC models (and native xBIM models ) as well as displaying semantic data.
-* [xBIM WebUI](https://github.com/xBimTeam/XbimWebUI) - a web application that can open and render 3D IFC models. 
+* [xBIM WebUI](https://github.com/xBimTeam/XbimWebUI) - a web application that can open and render 3D models [processed by xBIM](/examples/creating-wexbim-file.html). 
 * [xBIM Utilities](https://github.com/xBimTeam/XbimUtilities) - a set of sample console applications to perform bulk functions on IFC files.
 * [xBIM Exchange ](https://github.com/xBimTeam/XbimExchange) - Project containing libraries and sample application demonstrating various approaches to work with COBie. This includes [Xbim.Cobie](https://github.com/xBimTeam/XbimExchange/tree/master/Xbim.COBie) which represents spreadsheet view of the COBie model, [implementation](https://github.com/xBimTeam/XbimExchange/tree/master/Xbim.COBieLite) of [CobieLite](https://www.nibs.org/?page=bsa_cobielite),  [Xbim.CobieLiteUK](https://github.com/xBimTeam/XbimExchange/tree/master/Xbim.COBieLiteUK) which is XML model inspired by CobieLite but more rigorous and memory efficient and [CobieExpress](https://github.com/xBimTeam/XbimEssentials/tree/master/Xbim.CobieExpress) as an EXPRESS based model representing COBie. [XbimExchange ](https://github.com/xBimTeam/XbimExchange) contains sample code for conversions between IFC and various implementations of COBie.
 * [xBIM Samples](https://github.com/xBimTeam/XbimSamples) - a sample console application demonstrating how to undertake simple IFC creation and other tasks with xBIM.

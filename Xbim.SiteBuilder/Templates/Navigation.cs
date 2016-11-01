@@ -12,13 +12,14 @@ namespace Xbim.SiteBuilder.Templates
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using Xbim.SiteBuilder.Structure;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
+    #line 1 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class Navigation : NavigationBase
     {
@@ -30,105 +31,121 @@ namespace Xbim.SiteBuilder.Templates
         {
             this.Write("\r\n");
             
-            #line 7 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
+            #line 8 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
  if(_isRoot) {
             
             #line default
             #line hidden
             this.Write("\t<ul class=\"nav navbar-nav\">\r\n");
             
-            #line 9 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
+            #line 10 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
  } else {
             
             #line default
             #line hidden
             this.Write("\t<ul class=\"dropdown-menu\">\r\n");
             
-            #line 11 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
+            #line 12 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
  } 
             
             #line default
             #line hidden
             
-            #line 12 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
- foreach(var children in Children) {
+            #line 13 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+	foreach(var g in ChildrenGroups)
+    {
+        if (!string.IsNullOrWhiteSpace(g.Key))
+        { 
             
             #line default
             #line hidden
+            this.Write("\t\t<li role=\"separator\" class=\"group-divider\">");
             
-            #line 13 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
- if (children.Children.Any()) { 
-		var t = new Navigation(children, false);
-            
-            #line default
-            #line hidden
-            this.Write("        <li class=\"dropdown\">\r\n");
-            
-            #line 16 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
-		var href = "#";
-		var index = children.Children.FirstOrDefault(c => c.Name == "index");
-	   if (index != null)
-       {
-		   href = index.RelativeUrl;
-	   }
- 
+            #line 17 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(g.Key));
             
             #line default
             #line hidden
-            this.Write("\t\t\t<a href=\"");
+            this.Write(" </li>\r\n");
             
-            #line 23 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(href));
+            #line 18 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+      }
+		foreach(var children in  GetChildren(g)) {
+			if (GetChildren(children).Any()) { 
+			var t = new Navigation(children, false, _activeNode);
             
             #line default
             #line hidden
-            this.Write("\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"tru" +
-                    "e\" aria-expanded=\"false\">");
+            this.Write("        <li class=\"dropdown\">\r\n\t\t\t<a href=\"#\" class=\"dropdown-toggle\" data-toggle" +
+                    "=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">");
             
-            #line 23 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(children.Name));
+            #line 23 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(children.Title));
             
             #line default
             #line hidden
             this.Write(" <span class=\"caret\"></span></a>\r\n\t\t\t");
             
-            #line 24 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
+            #line 24 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.TransformText()));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 25 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
- } else { 
+            #line 25 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+			} else { 
             
             #line default
             #line hidden
-            this.Write("        <li>\r\n\t\t\t<a href=\"/");
             
-            #line 27 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
+            #line 26 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+				if (children == _activeNode) { 
+            
+            #line default
+            #line hidden
+            this.Write("        <li class=\"active\">\r\n");
+            
+            #line 28 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+				} else { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\r\n        <li>\r\n");
+            
+            #line 30 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+				} 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t<a href=\"/");
+            
+            #line 31 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(children.RelativeUrl));
             
             #line default
             #line hidden
             this.Write("\">");
             
-            #line 27 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(children.Name));
+            #line 31 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(children.Title));
             
             #line default
             #line hidden
             this.Write("</a>\r\n");
             
-            #line 28 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
- } 
+            #line 32 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+			} 
             
             #line default
             #line hidden
             this.Write("\t\t</li>\r\n");
             
-            #line 30 "C:\Users\Martin\Source\StaticHtml\StaticHtml\Templates\Navigation.tt"
- } 
+            #line 34 "C:\Users\Martin\Source\Repos\XbimSiteBuilder\Xbim.SiteBuilder\Templates\Navigation.tt"
+		} 	
+	}
+ 
+	
             
             #line default
             #line hidden

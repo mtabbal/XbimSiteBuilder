@@ -14,7 +14,7 @@
     <meta name="author" content="xBIM Team">
     <link rel="icon" href="/img/favicon.ico">
 
-    <title>xBIM</title>
+    <title><#= Settings.Title ?? ContentNode.Title #></title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -49,37 +49,34 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <# 
-		  var navTempl = new Navigation(NavigationRoot, true);
+		  var navTempl = new Navigation(NavigationRoot, true, ContentNode);
 		   #>
 		   <#= navTempl.TransformText() #>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-<# if (WithBanner) { #>
+<# if (Settings.ShowBanner) { #>
 	<div class="banner architecture">
-		<h1>
-		    The xBIM Toolkit <br />
-		    <small>eXtensible Building Information Modelling</small>
-		</h1>
+		<#= Settings.BannerContent #>
 	</div>
 <# } #>
 
-	<# if(UseContainer) {#>
+<# if(Settings.UseContainer) {#>
 	<div class="container">
-
-<#= Content #>
-
-    </div>
 	<# } else { #>
-	<div class="container">
-
+	<div>
+	<# } #>
 <#= Content #>
 
     </div>
-	<# } #>
     
 
-
+	<div class="brands-container">
+	<p><small>Some of the companies using xBIM Toolkit:</small></p>
+		<img src="/img/logos/viewpoint_logo_gray.png" class="brand"/>
+		<img src="/img/logos/welplan_logo_gray.png" class="brand"/>
+		<img src="/img/logos/nbs_logo_gray.png" class="brand"/>
+	</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

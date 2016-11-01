@@ -1,5 +1,12 @@
-﻿Basic model operations
+﻿<!-- {
+  "Order" : 0,
+  "MenuGroup" : "Basic",
+  "MenuGroupOrder" : 0
+} -->
+
+Basic model operations
 ======================
+
 To get started the easiest way to get xBIM into your project is to use [NuGet](https://www.nuget.org/packages?q=xbim). To do anything you want with the data you only need 
 [xBIM Essentials](https://www.nuget.org/packages/Xbim.Essentials/). If you need anything to do with geometry (like visualization) you will also need 
 [xBIM Geometry Engine](https://www.nuget.org/packages/Xbim.Geometry/). There are many years of development behind xBIM and both these packages are mature and pretty much stable.
@@ -12,6 +19,7 @@ with IFC2x3. Actually most of the code is IFC version agnostic as it uses IFC4 i
 
 Create
 ------
+
 Following example will create simple IFC model without any geometry. As you can see `IfcStore` takes a configuration object `XbimEditorCredentials` representing
 current application and user and uses it to maintain `OwnerHistory` of root entities. This is a requirement and
 makes it easier to handle one of the many aspects needed to create compliant IFC models. This IFC doesn't define any [Model View Definition (MVD)](http://www.buildingsmart-tech.org/specifications/ifc-view-definition)

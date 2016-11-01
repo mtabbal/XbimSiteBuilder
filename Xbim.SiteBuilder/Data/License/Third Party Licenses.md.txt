@@ -11,7 +11,6 @@ The core XBIM library makes use of the following 3rd party software packages, un
 
 Additionally the Samples also make use of the following libraries
 
-* [SceneJS](https://github.com/xeolabs/scenejs): joint MIT and GPL Licence
 * [SignalR](https://github.com/SignalR/SignalR): Apache 2.0 Licence
 
 All licences are included in full under the Licences\3rd Party solution folder. 

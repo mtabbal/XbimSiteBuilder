@@ -1,5 +1,11 @@
-﻿Creating WexBIM file for a web presentation
--------------------------------------------
+﻿<!-- {
+  "Order" : 3,
+  "MenuGroup" : "Basic",
+  "MenuGroupOrder" : 0
+} -->
+
+Creating WexBIM file for a web presentation
+===========================================
 
 <canvas id="x-view" style="width:50%;float:right;"></canvas>
 
