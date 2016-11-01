@@ -154,6 +154,8 @@ namespace Xbim.SiteBuilder.Templates
 		<img src=""/img/logos/viewpoint_logo_gray.png"" class=""brand""/>
 		<img src=""/img/logos/welplan_logo_gray.png"" class=""brand""/>
 		<img src=""/img/logos/nbs_logo_gray.png"" class=""brand""/>
+		<img src=""/img/logos/northumbria_logo_gray.png"" class=""brand""/>
+		<img src=""/img/logos/bim_academy_logo_gray.png"" class=""brand""/>
 	</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->

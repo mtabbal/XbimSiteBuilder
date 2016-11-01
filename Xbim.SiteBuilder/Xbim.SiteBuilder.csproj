@@ -89,7 +89,9 @@
     <Content Include="Data\Examples\Basic Model Operations.md.txt" />
     <Content Include="Data\xBIM 4\Fast Upgrade Track.md.txt" />
     <Content Include="Resources\css\codestyles.css" />
+    <Content Include="Resources\img\logos\bim_academy_logo_gray.png" />
     <Content Include="Resources\img\logos\nbs_logo_gray.png" />
+    <Content Include="Resources\img\logos\northumbria_logo_gray.png" />
     <Content Include="Resources\img\logos\viewpoint_logo_gray.png" />
     <Content Include="Resources\img\logos\welplan_logo_gray.png" />
     <Content Include="Resources\img\logos\xbim_white_h35.png" />
