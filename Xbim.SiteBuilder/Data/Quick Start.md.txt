@@ -74,7 +74,7 @@ typed object initializer to set up values of the object. It is not necessary to 
 the resulting entity. To find an entity you want you will use following functions:
 
 ```cs
-var firstWall = model.Instances.First`OrDefault<IfcWall>();
+var firstWall = model.Instances.FirstOrDefault<IfcWall>();
 var allWalls = model.Instances.OfType<IfcWall>();
 var specificWall = model.Instances.Where<IfcWall>(w => w.Name == "Brick wall");
 ```
