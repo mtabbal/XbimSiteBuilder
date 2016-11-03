@@ -10,12 +10,12 @@
 } -->
 # What is it?
 
-The **xBIM Toolkit** (eXtensible Building Information Modelling) is an [open-source](/license/license.html), software development BIM toolkit that 
-supports the BuildingSmart Data Model (aka the [Industry Foundation Classes IFC](http://en.wikipedia.org/wiki/Industry_Foundation_Classes)).
+The **xBIM Toolkit** (eXtensible Building Information Modelling) is a **.NET** [open-source](/license/license.html) software development BIM toolkit that 
+supports the [BuildingSmart](http://www.buildingsmart-tech.org/) Data Model (aka the [Industry Foundation Classes IFC](http://en.wikipedia.org/wiki/Industry_Foundation_Classes)).
 
-xBIM allows developers to read, create and view [Building Information (BIM)](http://en.wikipedia.org/wiki/Building_information_modeling) Models in the IFC format. 
+xBIM allows .NET developers to read, create and view [Building Information (BIM)](http://en.wikipedia.org/wiki/Building_information_modeling) Models in the IFC format. 
 There is full support for geometric, topological operations and visualisation. In addition xBIM supports 
-bi-directional translation between IFC and COBie formats
+bi-directional translation between IFC and COBie formats. Core libraries for data manipulation are all written in C#, core of geometry engine is written in C++.
 
 # Getting Started
 

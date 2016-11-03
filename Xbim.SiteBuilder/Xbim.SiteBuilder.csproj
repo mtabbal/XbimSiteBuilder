@@ -82,7 +82,7 @@
     <Content Include="Data\[02] Examples\[02-Advanced-01] Federating Models.md.txt" />
     <Content Include="Data\[02] Examples\[01-Basic-02] Proper Wall in 3D.md.txt" />
     <Content Include="Data\[02] Examples\[01-Basic-03] STEP to XML and Back Again.md.txt" />
-    <Content Include="Data\[02] Examples\[01-Basic-05] Using Linq for Optimal Performance.md.txt" />
+    <Content Include="Data\[02] Examples\[01-Basic-05] Using LINQ for Optimal Performance.md.txt" />
     <Content Include="Data\[04] License\Third Party Licenses.md.txt" />
     <Content Include="Data\[04] License\License.md.txt" />
     <Content Include="Data\[02] Examples\[02-Advanced-03] Change Log Creation.md.txt" />
