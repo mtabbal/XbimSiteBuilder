@@ -18,6 +18,7 @@ namespace Xbim.SiteBuilder.Structure
             //fix for the case of multi-extension like .md.txt
             var name = Path.GetFileNameWithoutExtension(file.Name);
             name = Path.GetFileNameWithoutExtension(name);
+            var nameSettings = GetSettingsFromName(ref name);
 
             var path = string.IsNullOrWhiteSpace(dir.RelativePath) ? "" : dir.RelativePath + Path.DirectorySeparatorChar;
 
@@ -31,6 +32,7 @@ namespace Xbim.SiteBuilder.Structure
 
             var content = File.ReadAllText(SourcePath, Encoding.UTF8);
             _settings = GetSettings(ref content) ?? new PageSettings();
+            MergeNameSettings(_settings, nameSettings);
             Content = content;
         }
 

@@ -1,8 +1,5 @@
-﻿<!-- {
-  "Order" : 2,
-  "MenuGroup" : "Basic",
-  "MenuGroupOrder" : 0
-} -->
+﻿Proper Wall in 3D
+=================
 
 
 ```cs

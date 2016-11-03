@@ -35,8 +35,7 @@ namespace Xbim.SiteBuilder.Templates
             return node.Children
                     .Where(c => c.Settings != null && c.Settings.Order >= 0)
                     .OrderBy(c => c.Settings.Order)
-                    .ThenBy(c => c.UrlName)
-                    .Concat( node.Children.Where(c => c is DirectoryNode && GetChildren(c).Any()));
+                    .ThenBy(c => c.UrlName);
         }
 
         private IEnumerable<ContentNode> GetChildren(IGrouping<string, ContentNode> group)
@@ -44,8 +43,7 @@ namespace Xbim.SiteBuilder.Templates
             return group
                     .Where(c => c.Settings != null && c.Settings.Order >= 0)
                     .OrderBy(c => c.Settings.Order)
-                    .ThenBy(c => c.UrlName)
-                    .Concat(group.Where(c => c is DirectoryNode && GetChildren(c).Any()));
+                    .ThenBy(c => c.UrlName);
         }
 
 

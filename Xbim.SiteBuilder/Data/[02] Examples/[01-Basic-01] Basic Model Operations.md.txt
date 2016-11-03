@@ -1,10 +1,4 @@
-﻿<!-- {
-  "Order" : 0,
-  "MenuGroup" : "Basic",
-  "MenuGroupOrder" : 0
-} -->
-
-Basic model operations
+﻿Basic model operations
 ======================
 
 To get started the easiest way to get xBIM into your project is to use [NuGet](https://www.nuget.org/packages?q=xbim). To do anything you want with the data you only need 

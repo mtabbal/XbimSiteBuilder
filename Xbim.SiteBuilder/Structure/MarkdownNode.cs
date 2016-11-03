@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Xbim.SiteBuilder.Templates;
 
 namespace Xbim.SiteBuilder.Structure
@@ -20,6 +21,8 @@ namespace Xbim.SiteBuilder.Structure
             //fix for the case of multi-extension like .md.txt
             var name = Path.GetFileNameWithoutExtension(file.Name);
             name = Path.GetFileNameWithoutExtension(name);
+            var nameSettings = GetSettingsFromName(ref name);
+
 
             var path = string.IsNullOrWhiteSpace(dir.RelativePath) ? "" : dir.RelativePath + Path.DirectorySeparatorChar;
 
@@ -33,6 +36,7 @@ namespace Xbim.SiteBuilder.Structure
 
             var content = File.ReadAllText(SourcePath, Encoding.UTF8);
             _settings = GetSettings(ref content) ?? new PageSettings();
+            MergeNameSettings(_settings, nameSettings);
 
             //transform tables which are not supported in this Markdown processor
             content = TransformTables(content);
@@ -44,6 +48,8 @@ namespace Xbim.SiteBuilder.Structure
             content = md.Transform(content);
             Content = content;
         }
+
+        
 
         private PageSettings _settings;
         public override PageSettings Settings => _settings;

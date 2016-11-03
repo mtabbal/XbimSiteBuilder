@@ -11,12 +11,28 @@ namespace Xbim.SiteBuilder.Structure
     {
         public DirectoryNode(DirectoryInfo dir, DirectoryInfo root)
         {
+            var name = dir.Name;
+            _settings = GetSettingsFromName(ref name) ?? new PageSettings() ;
+
             Directory = dir;
             RootDirectory = root;
             SourcePath = dir.FullName;
-            RelativePath = GetRelativePath(SourcePath + Path.DirectorySeparatorChar, root.FullName).URLFriendly();
-            Title = dir.Name;
-            UrlName = dir.Name.URLFriendly();
+            Title = name;
+            UrlName = name.URLFriendly();
+
+            var relPath = GetRelativePath(SourcePath + Path.DirectorySeparatorChar, root.FullName);
+            if (string.IsNullOrWhiteSpace(relPath))
+            {
+                RelativePath = "";
+            }
+            else
+            {
+                //replace the final name with the actual name without potential settings string
+                var relPathSegments = relPath.Split(new[] { Path.DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries).Select(n => n.URLFriendly()).ToArray();
+                relPathSegments[relPathSegments.Length - 1] = UrlName;
+                relPath = string.Join(Path.DirectorySeparatorChar.ToString(), relPathSegments) + Path.DirectorySeparatorChar;
+                RelativePath = relPath.URLFriendly();
+            }
 
             //get all MarkDown and HTML content files and create content nodes
             var files = dir.EnumerateFiles();
@@ -32,7 +48,9 @@ namespace Xbim.SiteBuilder.Structure
             }
         }
 
-        public override PageSettings Settings => null;
+        private PageSettings _settings;
+
+        public override PageSettings Settings => _settings;
 
         public override void Render(DirectoryInfo webRoot)
         {

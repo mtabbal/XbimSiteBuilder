@@ -1,0 +1,57 @@
+﻿# Using Linq for Optimal Performance
+
+Following code will only execute the `IEnumerable` once you actually access it. Furthermore xBIM uses type of entities internally as
+a first level filter so you should ask for the most specific type you can. Keep in mind that `IModel.Instances` contains **all** entities
+in the model which is typically hundreds of thousands objects! So you don't want to iterate over all of them to do anything. 
+
+```cs
+public static void SelectionWithLinq()
+{
+    const string ifcFilename = "SampleHouse.ifc";
+    var model = IfcStore.Open(ifcFilename);
+    using (var txn = model.BeginTransaction())
+    {
+        var requiredProducts = new IIfcProduct[0]
+            .Concat(model.Instances.OfType<IIfcWallStandardCase>())
+            .Concat(model.Instances.OfType<IIfcDoor>())
+            .Concat(model.Instances.OfType<IIfcWindow>());
+
+        //This will only iterate over entities you really need (9 in this case)
+        foreach (var product in requiredProducts)
+        {
+            //Do anything you want here...
+        }
+
+        txn.Commit();
+    }
+}
+```
+
+<div class="alert alert-danger" role="alert"> 
+	<strong>Please, never use this kind of code:</strong>
+</div>
+
+```cs
+public static void SelectionWithoutLinq()
+{
+    const string ifcFilename = "SampleHouse.ifc";
+    var model = IfcStore.Open(ifcFilename);
+    using (var txn = model.BeginTransaction())
+    {
+        //this will iterate over 47309 entities instead of just 9 you need in this case!
+        foreach (var entity in model.Instances)
+        {
+            if (entity is IIfcWallStandardCase ||
+                entity is IIfcDoor ||
+                entity is IIfcWindow)
+            {
+                //You may want to do something here. Please DON'T!
+            }
+        }
+
+        
+        txn.Commit();
+    }
+}
+```
+

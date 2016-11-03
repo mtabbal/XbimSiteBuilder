@@ -145,6 +145,57 @@ namespace Xbim.SiteBuilder.Structure
 
             return false;
         }
+
+        protected PageSettings GetSettingsFromName(ref string name)
+        {
+            if (!name.StartsWith("["))
+                return null;
+
+            var dataExp = new Regex("^\\[(?<data>.*?)\\]");
+            var match = dataExp.Match(name);
+            if (match.Captures.Count == 0)
+                return null;
+
+            var data = match.Groups["data"]?.Value;
+            if (string.IsNullOrWhiteSpace(data))
+                return null;
+
+            //remove data from the name
+            name = name.Replace(match.Value, "").Trim();
+            var fields = data.Split('-');
+
+            //it is just an order
+            if (fields.Length == 1)
+            {
+                var order = Convert.ToInt32(fields[0].TrimStart('0'));
+                return new PageSettings { Order = order, MenuGroup = null, MenuGroupOrder = -1 };
+            }
+
+            if (fields.Length == 3)
+            {
+                var menuGroupOrder = Convert.ToInt32(fields[0].TrimStart('0'));
+                var menuGroup = fields[1];
+                var order = Convert.ToInt32(fields[2].TrimStart('0'));
+                return new PageSettings { Order = order, MenuGroup = menuGroup, MenuGroupOrder = menuGroupOrder };
+            }
+
+            throw new FormatException($"Wrong order and group format for '{name}'");
+        }
+
+        protected void MergeNameSettings(PageSettings settings, PageSettings nameSettings)
+        {
+            if (nameSettings == null)
+                return;
+
+            if (nameSettings.Order >= 0)
+                settings.Order = nameSettings.Order;
+
+            if (nameSettings.MenuGroupOrder >= 0)
+                settings.MenuGroupOrder = nameSettings.MenuGroupOrder;
+
+            if (nameSettings.MenuGroup != null)
+                settings.MenuGroup = nameSettings.MenuGroup;
+        }
     }
 
 

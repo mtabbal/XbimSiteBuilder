@@ -1,10 +1,4 @@
-﻿<!-- {
-  "Order" : 0,
-  "MenuGroup" : "Advanced",
-  "MenuGroupOrder" : 5
-} -->
-
-Change Log Creation
+﻿Change Log Creation
 ===================
 
 This is one of the interesting aspects of xBIM. It is in a core of our design that every change happening in the model is
