@@ -9,8 +9,9 @@ namespace Xbim.SiteBuilder.Structure
 {
     public class DirectoryNode: ContentNode
     {
-        public DirectoryNode(DirectoryInfo dir, DirectoryInfo root)
+        public DirectoryNode(DirectoryInfo dir, DirectoryInfo root, DirectoryNode parent)
         {
+            Parent = parent;
             var name = dir.Name;
             _settings = GetSettingsFromName(ref name) ?? new PageSettings() ;
 
@@ -19,20 +20,7 @@ namespace Xbim.SiteBuilder.Structure
             SourcePath = dir.FullName;
             Title = name;
             UrlName = name.URLFriendly();
-
-            var relPath = GetRelativePath(SourcePath + Path.DirectorySeparatorChar, root.FullName);
-            if (string.IsNullOrWhiteSpace(relPath))
-            {
-                RelativePath = "";
-            }
-            else
-            {
-                //replace the final name with the actual name without potential settings string
-                var relPathSegments = relPath.Split(new[] { Path.DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries).Select(n => n.URLFriendly()).ToArray();
-                relPathSegments[relPathSegments.Length - 1] = UrlName;
-                relPath = string.Join(Path.DirectorySeparatorChar.ToString(), relPathSegments) + Path.DirectorySeparatorChar;
-                RelativePath = relPath.URLFriendly();
-            }
+            RelativePath = parent == null ? "" : parent.RelativePath + UrlName + Path.DirectorySeparatorChar;
 
             //get all MarkDown and HTML content files and create content nodes
             var files = dir.EnumerateFiles();
@@ -44,7 +32,7 @@ namespace Xbim.SiteBuilder.Structure
 
             foreach (var subDir in dir.GetDirectories())
             {
-                Children.Add(new DirectoryNode(subDir, root) { Parent = this });
+                Children.Add(new DirectoryNode(subDir, root, this));
             }
         }
 
@@ -56,7 +44,7 @@ namespace Xbim.SiteBuilder.Structure
         {
             if (Directory != RootDirectory)
             {
-                var dir = Path.Combine(webRoot.FullName, UrlName);
+                var dir = Path.Combine(webRoot.FullName, RelativePath);
                 if (!System.IO.Directory.Exists(dir))
                     System.IO.Directory.CreateDirectory(dir);
             }

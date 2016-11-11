@@ -7,8 +7,7 @@ namespace Xbim.SiteBuilder.Structure
     {
         public StaticNode(FileInfo file, DirectoryNode dir)
         {
-            //fix for the case of multi-extension like .md.txt
-            var path = string.IsNullOrWhiteSpace(dir.RelativePath) ? "" : dir.RelativePath + Path.DirectorySeparatorChar;
+            var path = string.IsNullOrWhiteSpace(dir.RelativePath) ? "" : dir.RelativePath;
             var name = Path.GetFileNameWithoutExtension(file.Name).URLFriendly();
 
             Directory = file.Directory;
@@ -23,9 +22,9 @@ namespace Xbim.SiteBuilder.Structure
 
         public override void Render(DirectoryInfo webRoot)
         {
-            var file = Path.Combine(webRoot.FullName, RelativePath);
+            var file = Path.Combine( webRoot.FullName, RelativePath);
             //just copy the file
-            File.Copy(SourcePath, file);
+            File.Copy(SourcePath, file, true);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Xbim.SiteBuilder.Structure
             var nameSettings = GetSettingsFromName(ref name);
 
 
-            var path = string.IsNullOrWhiteSpace(dir.RelativePath) ? "" : dir.RelativePath + Path.DirectorySeparatorChar;
+            var path = string.IsNullOrWhiteSpace(dir.RelativePath) ? "" : dir.RelativePath;
 
             Parent = dir;
             Directory = file.Directory;
@@ -71,7 +71,7 @@ namespace Xbim.SiteBuilder.Structure
             content = MakeExternalLinksOpenBlank(content);
 
             //save the result relative to root directory
-            var htmlFile = Path.Combine(webRoot.FullName, RelativePath);
+            var htmlFile = Path.Combine( webRoot.FullName, RelativePath);
             File.WriteAllText(htmlFile, content, Encoding.UTF8);
         }
 

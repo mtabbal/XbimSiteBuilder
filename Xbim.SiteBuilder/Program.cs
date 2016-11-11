@@ -51,7 +51,7 @@ namespace Xbim.SiteBuilder
             File.WriteAllText(codeCssPath, codeCss);
 
             //build content structure
-            var contentRoot = new DirectoryNode(dataDir, dataDir);
+            var contentRoot = new DirectoryNode(dataDir, dataDir, null);
             contentRoot.Render(rootDir);
         }
 

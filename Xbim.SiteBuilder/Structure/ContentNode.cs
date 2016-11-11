@@ -108,13 +108,12 @@ namespace Xbim.SiteBuilder.Structure
             {
                 if (path.StartsWith("/") && !path.StartsWith("//"))
                 {
-                    //trim leading slash
-                    var rPath = path.Substring(1);
-
                     //validate all paths (it can either be file resource or content node)
-                    if (!PathExists(rPath, root, rootDir))
+                    if (!PathExists(path, root, rootDir))
                         Console.WriteLine($"{path} not found in {contentNode.Title} ({contentNode.RelativeUrl})");
 
+                    //trim initial '/'
+                    var rPath = path.Substring(1);
                     //prefix with relative path
                     for (int i = 0; i < depth; i++)
                         rPath = "../" + rPath;
@@ -132,7 +131,7 @@ namespace Xbim.SiteBuilder.Structure
             //check physical file
             if (rootDir != null)
             {
-                var filePath = Path.Combine(rootDir.FullName, path.Replace('/', Path.DirectorySeparatorChar));
+                var filePath = rootDir.FullName + path.Replace('/', Path.DirectorySeparatorChar);
                 if (File.Exists(filePath))
                     return true;
             }
@@ -140,6 +139,7 @@ namespace Xbim.SiteBuilder.Structure
             if (node is DirectoryNode)
                 return node.Children.Any(c => PathExists(path, c));
 
+            path = path.Substring(1);
             if (path.Equals(node.RelativeUrl))
                 return true;
 
@@ -162,6 +162,11 @@ namespace Xbim.SiteBuilder.Structure
 
             //remove data from the name
             name = name.Replace(match.Value, "").Trim();
+
+            //check if it is just -1
+            if (data == "-1")
+                return new PageSettings { Order = -1 };
+
             var fields = data.Split('-');
 
             //it is just an order

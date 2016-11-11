@@ -79,6 +79,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\[02] Examples\[-1] images\excel-report.png" />
+    <Content Include="Data\[02] Examples\[01-Basic-06] Excel Space Report from IFC.md.txt" />
     <Content Include="Data\[02] Examples\[02-Advanced-01] Federating Models.md.txt" />
     <Content Include="Data\[02] Examples\[01-Basic-02] Proper Wall in 3D.md.txt" />
     <Content Include="Data\[02] Examples\[01-Basic-03] STEP to XML and Back Again.md.txt" />
