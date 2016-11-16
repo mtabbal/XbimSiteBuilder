@@ -80,11 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\[02] Examples\[-1] images\excel-report.png" />
-    <Content Include="Data\[02] Examples\[01-Basic-06] Excel Space Report from IFC.md.txt" />
+    <Content Include="Data\[02] Examples\[01-Basic-02] Watch the log!.md.txt" />
+    <Content Include="Data\[02] Examples\[01-Basic-07] Excel Space Report from IFC.md.txt" />
     <Content Include="Data\[02] Examples\[02-Advanced-01] Federating Models.md.txt" />
-    <Content Include="Data\[02] Examples\[01-Basic-02] Proper Wall in 3D.md.txt" />
-    <Content Include="Data\[02] Examples\[01-Basic-03] STEP to XML and Back Again.md.txt" />
-    <Content Include="Data\[02] Examples\[01-Basic-05] Using LINQ for Optimal Performance.md.txt" />
+    <Content Include="Data\[02] Examples\[01-Basic-03] Proper Wall in 3D.md.txt" />
+    <Content Include="Data\[02] Examples\[01-Basic-04] STEP to XML and Back Again.md.txt" />
+    <Content Include="Data\[02] Examples\[01-Basic-06] Using LINQ for Optimal Performance.md.txt" />
     <Content Include="Data\[04] License\Third Party Licenses.md.txt" />
     <Content Include="Data\[04] License\License.md.txt" />
     <Content Include="Data\[02] Examples\[02-Advanced-03] Change Log Creation.md.txt" />
@@ -124,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\[01] Quick Start.md.txt" />
-    <Content Include="Data\[02] Examples\[01-Basic-04] Creating wexBIM file.md.txt" />
+    <Content Include="Data\[02] Examples\[01-Basic-05] Creating wexBIM file.md.txt" />
     <Content Include="Resources\css\bootstrap-theme.css" />
     <Content Include="Resources\css\bootstrap-theme.min.css" />
     <Content Include="Resources\css\bootstrap.css" />
