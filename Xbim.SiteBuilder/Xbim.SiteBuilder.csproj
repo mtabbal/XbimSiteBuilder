@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SiteMap.cs" />
     <Compile Include="Structure\ContentNode.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="PageSettings.cs" />
@@ -101,8 +102,10 @@
     <Content Include="Resources\img\logos\welplan_logo_gray.png" />
     <Content Include="Resources\img\logos\xbim_white_h35.png" />
     <Content Include="Resources\img\logos\xbim_white_h50.png" />
+    <Content Include="Resources\img\xbim.png" />
     <Content Include="Resources\js\sample-house.js" />
     <Content Include="Resources\js\xbim-viewer.js" />
+    <Content Include="Resources\robots.txt" />
     <Content Include="Templates\Navigation.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Navigation.cs</LastGenOutput>
